@@ -3,9 +3,9 @@ const path = require('path')
 const productRoutes = require('./routes/Product')
 const userRoutes = require('./routes/User')
 const mongoose = require('mongoose')
+require('dotenv').config()
 
 const app = express()
-
 
 //Cross origins
 app.use((req, res, next)=>{
@@ -17,7 +17,8 @@ app.use((req, res, next)=>{
 
 // Connexion à la base de donnée
 mongoose.set('strictQuery', false);
-mongoose.connect('mongodb+srv://rachid:rachidAtlas@cluster0.mgbdb.mongodb.net/coffeDatabase?retryWrites=true&w=majority',
+
+mongoose.connect(`mongodb+srv://${process.env.DB_USERNAME}:${process.env.DB_PASSWORD}@${process.env.DB_HOSTNAME}/${process.env.DB_NAME}?retryWrites=true&w=majority`,
                 {useNewUrlParser : true,
                 useUnifiedTopology : true,
                 })
