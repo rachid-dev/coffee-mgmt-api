@@ -37,8 +37,7 @@ exports.createProduct = async (req, res, next)=>{
 exports.updateProduct = async (req, res, next)=>{
 
    const [fields, files] = await formParser.parse(req);
-   
-   product = files.image[0] !== '' ? ({
+   product = files.image ? ({
        ...JSON.parse(fields.product[0]),
        picture : `${req.protocol}://${req.headers.host}/assets/${files.image[0].newFilename}`
    }) :(
