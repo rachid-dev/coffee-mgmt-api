@@ -1,4 +1,4 @@
-const {formidable} = require('formidable-serverless-2');
+const {formidable} = require("formidable");
 
 const options = {
     uploadDir : `${__dirname}/../public/assets`,
