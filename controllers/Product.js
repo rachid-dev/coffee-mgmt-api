@@ -25,7 +25,7 @@ exports.createProduct = async (req, res, next)=>{
     const [fields, files] = await formParser.parse(req);
     const product = new Product({
         ...JSON.parse(fields.product[0]),
-        picture : `${req.protocol}://${req.headers.host}/assets/${files.image[0].newFilename}`
+        picture : `${process.env.PROTOCOL}://${req.headers.host}/assets/${files.image[0].newFilename}`
     });
 
     product.save()
